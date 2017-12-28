@@ -1,0 +1,17 @@
+
+ <!-- action usual -->
+ <!-- table obj_prptransfer search -->
+ [#if VIEW_MODE="search_obj_prptransfer" || VIEW_MODE=""#]
+  [#inc obj_prptransfer_search_admin.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table obj_prptransfer search -->
+ <!-- table obj_prptransfer edit -->
+ [#if VIEW_MODE="edit_obj_prptransfer"#]
+   [#inc obj_prptransfer_edit.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table obj_prptransfer edit -->
+ <!-- table obj_prptransfer view --> 
+ [#if VIEW_MODE="view_obj_prptransfer"#]
+   [#inc obj_prptransfer_view.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table obj_prptransfer view -->

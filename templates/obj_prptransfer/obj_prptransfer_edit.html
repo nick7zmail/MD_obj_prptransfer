@@ -1,0 +1,82 @@
+
+<!-- Table 'obj_prptransfer' edit -->
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+[#if OK#]
+<div class="alert alert-success"><#LANG_DATA_SAVED#></div>
+[#endif OK#]
+[#if ERR#]
+<div class="alert alert-error"><#LANG_FILLOUT_REQURED#></div>
+[#endif ERR#]
+<fieldset>
+[#if ID=""#]
+<legend><#LANG_NEW_RECORD#></legend>
+[#endif ID#]
+<!-- TITLE (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_TITLE#] style="color:red;font-weight:bold"[#endif#]>
+ <#LANG_TITLE#>:
+ (*)
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="title" value="[#TITLE#]" id="title"></div>
+</div>
+<!-- LINKED_OBJECT (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_LINKED_OBJECT#] style="color:red;font-weight:bold"[#endif#]>
+ <#LANG_LINKED_OBJECT#>:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="linked_object" value="[#LINKED_OBJECT#]" id="linked_object"></div>
+</div>
+<!-- LINKED_PROPERTY (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_LINKED_PROPERTY#] style="color:red;font-weight:bold"[#endif#]>
+ <#LANG_LINKED_PROPERTY#>:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="linked_property" value="[#LINKED_PROPERTY#]" id="linked_property"></div>
+</div>
+<div class="form-group">
+ <label class="col-lg-3 control-label">
+ </label>
+ <div class="col-lg-4" style="padding-left: 70px;"><span class="glyphicon glyphicon-arrow-down"></span></div>
+</div>
+<!-- TARGET_OBJECT (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_TARGET_OBJECT#] style="color:red;font-weight:bold"[#endif#]>
+ Целевой объект:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="target_object" value="[#TARGET_OBJECT#]" id="target_object"></div>
+</div>
+<!-- TARGET_PROPERTY (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_TARGET_PROPERTY#] style="color:red;font-weight:bold"[#endif#]>
+ Целевое свойство:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="target_property" value="[#TARGET_PROPERTY#]" id="target_property"></div>
+</div>
+
+<!-- UPDATED (datetime) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_UPDATED#] style="color:red;font-weight:bold"[#endif#]>
+ <#LANG_UPDATED#>:
+ </label>
+ <div class="col-lg-4">
+<input class="form-control" id="disabledInput" type="text" placeholder="[#UPDATED#]" disabled>
+ </div>
+</div>
+[#module name="linkedobject" object_field="linked_object" property_field="linked_property" method_field="linked_method"#]
+[#module name="linkedobject" object_field="target_object" property_field="target_property" method_field="target_method"#]
+<div class="form-group">
+        <div class="col-lg-offset-3 col-lg-4">
+ [#if ID!=""#]
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+ [#else ID#]
+ <button type="submit" name="subm" value="Add" class="btn btn-primary"><#LANG_ADD#></button>
+ [#endif ID#]
+ <a href="?" class="btn btn-default "><#LANG_CANCEL#></a>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="update">
+        </div>
+</div>
+</fieldset>
+</form>
