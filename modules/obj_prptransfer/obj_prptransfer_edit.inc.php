@@ -9,25 +9,22 @@
   $rec=SQLSelectOne("SELECT * FROM $table_name WHERE ID='$id'");
   if ($this->mode=='update') {
    $ok=1;
-  //updating '<%LANG_TITLE%>' (varchar, required)
    global $title;
    $rec['TITLE']=$title;
    if ($rec['TITLE']=='') {
     $out['ERR_TITLE']=1;
     $ok=0;
    }
-  //updating 'TARGET_OBJECT' (varchar)
    global $target_object;
    $rec['TARGET_OBJECT']=$target_object;
-  //updating 'TARGET_PROPERTY' (varchar)
    global $target_property;
    $rec['TARGET_PROPERTY']=$target_property;
-  //updating '<%LANG_LINKED_OBJECT%>' (varchar)
    global $linked_object;
    $rec['LINKED_OBJECT']=$linked_object;
-  //updating '<%LANG_LINKED_PROPERTY%>' (varchar)
    global $linked_property;
    $rec['LINKED_PROPERTY']=$linked_property;
+   global $inv;
+   if($inv==true) $rec['INV']=1; else $rec['INV']=0;
   //UPDATING RECORD
    if ($ok) {
     if ($rec['ID']) {

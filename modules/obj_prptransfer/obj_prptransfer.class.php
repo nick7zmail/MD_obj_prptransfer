@@ -170,7 +170,11 @@ function usual(&$out) {
    $total=count($properties);
    if ($total) {
     for($i=0;$i<$total;$i++) {
-     sg($properties[$i]['TARGET_OBJECT'].'.'.$properties[$i]['TARGET_PROPERTY'], $value);
+	 if($properties[$i]['INV']) {
+		sg($properties[$i]['TARGET_OBJECT'].'.'.$properties[$i]['TARGET_PROPERTY'], (int)!$value);
+	 } else { 
+		sg($properties[$i]['TARGET_OBJECT'].'.'.$properties[$i]['TARGET_PROPERTY'], $value);
+	 }
 	 $properties[$i]['UPDATED']=date('Y-m-d H:i:s');
 	 SQLUpdate('obj_prptransfer', $properties[$i]);
     }
@@ -215,6 +219,7 @@ obj_prptransfer -
  obj_prptransfer: TARGET_PROPERTY varchar(255) NOT NULL DEFAULT ''
  obj_prptransfer: LINKED_OBJECT varchar(100) NOT NULL DEFAULT ''
  obj_prptransfer: LINKED_PROPERTY varchar(100) NOT NULL DEFAULT ''
+ obj_prptransfer: INV int(1) NOT NULL DEFAULT ''
  obj_prptransfer: UPDATED datetime
 EOD;
   parent::dbInstall($data);
