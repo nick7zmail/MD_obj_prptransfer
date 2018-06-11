@@ -219,7 +219,7 @@ obj_prptransfer -
  obj_prptransfer: TARGET_PROPERTY varchar(255) NOT NULL DEFAULT ''
  obj_prptransfer: LINKED_OBJECT varchar(100) NOT NULL DEFAULT ''
  obj_prptransfer: LINKED_PROPERTY varchar(100) NOT NULL DEFAULT ''
- obj_prptransfer: INV int(1) NOT NULL DEFAULT ''
+ obj_prptransfer: INV int(1) NOT NULL DEFAULT 0
  obj_prptransfer: UPDATED datetime
 EOD;
   parent::dbInstall($data);
